@@ -1,0 +1,110 @@
+
+<!-- <p>The Object which we want to edit found at index{{foundIndex1}}</p> -->
+<div class="container">
+
+    <div class="flex-auto m-2 body-color">
+        <div class="md:flex no-wrap">
+          <div class="md:w-3/12 lg:w-3/12 sm:w-12/12 xs:w-12/12"></div>
+          <div class="md:w-6/12 lg:w-6/12 sm:w-12/12 xs:w-12/12 border-right card-background m-1">
+            <form #frmGroup="ngForm" name="frmGroup">
+              <div class="grid mt-2">
+                <div>
+                  <span class="text-gray-700">Vendor ID:</span>
+                </div>
+                <div>
+                  <input [(ngModel)]="vendorModel.vendorId" name="vendorId" matInput required>
+                </div>
+              </div>
+    
+              <div class="grid mt-2">
+                <div>
+                  <span class="text-gray-700">Vendor Name:</span>
+                </div>
+                <div>
+                  <input [(ngModel)]="vendorModel.vendorName" name="vendorName" matInput required>
+                </div>
+              </div>
+    
+              <div class="grid mt-2">
+                <div>
+                  <span class="text-gray-700">Vendor Address:</span>
+                </div>
+                <div>
+                  <input [(ngModel)]="vendorModel.vendorAddress" name="vendorAddress" matInput required>
+                </div>
+              </div>
+    
+              <div class="grid mt-2">
+                <div>
+                  <span class="text-gray-700">Vendor Phone Number:</span>
+                </div>
+                <div>
+                  <input [(ngModel)]="vendorModel.vendorPhoneNumber" name="vendorPhoneNumber" matInput required>
+                </div>
+              </div>
+    
+              <div class="grid mt-2">
+                <div>
+                  <span class="text-gray-700">Website Address:</span>
+                </div>
+                <div>
+                  <input [(ngModel)]="vendorModel.websiteAddress" name="websiteAddress" matInput required>
+                </div>
+              </div>
+    
+              <div class="m-2">
+                <button class = "btn btn-sm btn-danger" (click)="addtodo()">Add Item</button>
+              </div>
+            </form>
+          </div>
+          <div class="md:w-3/12 lg:w-3/12 sm:w-12/12 xs:w-12/12"></div>
+        </div>
+    </div>
+
+    
+    <div *ngIf="this.vars.length===0; else elseBlock">There is no vendor details available</div>
+    <ng-template #elseBlock>
+        <div>
+             <table>
+                <thead>
+                    <tr>
+                        <th scope="col">Vendor ID</th>
+                         <th scope="col">Vendor Name</th>
+                        <th scope="col">Vendor Address</th>
+                        <th scope="col">Vendor Phone Number</th>
+                        <th scope="col">Website Address</th>
+                        <th scope="col">Actions</th>
+                    </tr>
+                </thead>
+
+                <tbody *ngFor="let model4 of vars; let i =index">
+
+                    <tr>
+                        <td>{{model4.vendorId}}</td>
+                        <td>{{model4.vendorName}}</td>
+                        <td>{{model4.vendorAddress}}</td>
+                        <td>{{model4.vendorPhoneNumber}}</td>
+                        <td>{{model4.websiteAddress}}</td>
+                        <td> 
+
+                            <div>
+                                <button class="btn btn-danger" (click)="deleteTodo(model4)">Delete</button>
+                                <!-- <p>The value of "i" is: {{i}}</p> -->
+                                <button class="btn btn-danger" style="margin-left: 10px" (click)="editTodo(model4, i)">Edit</button>
+                            </div>
+
+                        </td>
+                    </tr>
+                </tbody>
+             </table>
+        
+        </div>
+    </ng-template>
+
+    <div>
+        <p class="text-center">Showing {{variable}} from app-todos component</p>
+    </div>
+    <div>
+        <p class="text-center">The Object index from we want to delete found at index: {{foundIndex}}</p>
+    </div>
+</div>
